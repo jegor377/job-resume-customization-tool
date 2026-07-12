@@ -1,0 +1,199 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[margin=1cm]{geometry}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{dashrule}
+
+% \setsansfont{Roboto}  % dla całego dokumentu
+\setsansfont{Roboto}[
+    BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+    BoldItalicFont = *-BoldItalic
+]
+\renewcommand{\familydefault}{\sfdefault} % aby Roboto było domyślne
+
+\newfontfamily\headingfont[
+  Path = fonts/,
+  UprightFont = *-Regular.ttf,
+  BoldFont = *-Bold.ttf,
+  ItalicFont = *-Italic.ttf,
+  BoldItalicFont = *-BoldItalic.ttf
+]{Aleo}
+
+\definecolor{secheadercolor}{HTML}{450808}
+\definecolor{hrcolor}{HTML}{E7D192}
+\definecolor{accentcolor}{HTML}{910D0D}
+\definecolor{maintextcolor}{HTML}{666666}
+
+\newcommand{\CVHeader}{
+    \headingfont\bfseries\fontsize{32pt}{22pt}\selectfont
+    \color{black}%
+}
+
+\newcommand{\CVSectionHeader}{%
+    \headingfont\bfseries\fontsize{20pt}{22pt}\selectfont
+    \color{secheadercolor}%
+}
+
+\newcommand{\CVSection}[2]{%
+    \par
+    {\CVSectionHeader \uppercase{#1}}\\
+    \textcolor{hrcolor}{\rule{\textwidth}{0.1cm}}\vspace{0.2cm}
+    #2
+}
+
+\newcommand{\CVEntry}[4]{%
+    {\fontsize{12pt}{10pt}\selectfont\textcolor{black}{#1} - \textcolor{accentcolor}{#2}}
+    \hfill
+    {\fontsize{9pt}{5pt}\selectfont #3}\\
+    #4
+}
+
+\newcommand{\CVEntryListBegin}{
+    \begin{itemize}[leftmargin=*, topsep=0pt]\itemsep0em
+}
+
+\newcommand{\CVEntryListItem}[1]{
+    \item \fontsize{9pt}{5pt}\selectfont #1
+}
+
+\newcommand{\CVEntryListEnd}{
+    \end{itemize}
+}
+
+\newcommand{\ProjectsEntry}[3]{%
+    {\fontsize{12pt}{10pt}\selectfont\textcolor{black}{#1} \href{#2}{\textcolor{accentcolor}{\faGithub}}}\\
+    {\fontsize{8pt}{10pt}\selectfont#3}
+}
+
+\newcommand{\CVEduEntry}[3]{
+    {\fontsize{12pt}{10pt}\selectfont \textcolor{black}{#1}}
+    \hfill
+    {\fontsize{9pt}{5pt}\selectfont #3} \\
+    \textcolor{accentcolor}{#2} \\
+}
+
+\newcommand{\CVEduEntryExtra}[4]{
+    {\fontsize{12pt}{10pt}\selectfont \textcolor{black}{#1}}
+    \hfill
+    {\fontsize{9pt}{5pt}\selectfont #3} \\
+    {\fontsize{9pt}{5pt}\selectfont#4} \\
+    \textcolor{accentcolor}{#2} \\
+}
+
+\newcommand{\CVCertificate}[1]{
+    \item \fontsize{10pt}{5pt}\selectfont #1
+}
+
+\newcommand{\CVLanguage}[2]{
+    {\fontsize{10pt}{5pt}\selectfont \textcolor{black}{\textbf{#1}} \hfill \textbf{#2}\\}
+}
+
+\newcommand{\dashedline}{
+    \hdashrule{\textwidth}{0.5pt}{0.1cm}
+}
+
+\newcommand{\CVStrengths}[2]{
+    {\fontsize{12pt}{6pt}\selectfont \textcolor{black}{#1}}\\
+    {\fontsize{10pt}{5pt}\selectfont #2} \\
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt} % wyłączenie wcięć w dokumencie
+
+\begin{document}
+
+\color{maintextcolor}
+
+\begin{minipage}[t]{4cm}
+    \vspace{0pt} % ważne: kotwica top dla lewej kolumny
+    \begin{tikzpicture}[baseline=(current bounding box.north)]
+        \clip (0,0) circle (1.5cm);
+        \node at (0,0) {\includegraphics[width=3cm]{images/profil.jpg}};
+    \end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{\dimexpr\textwidth-4cm\relax}
+    \vspace{0.5cm}
+    \raggedleft
+    {\CVHeader JOHN SMITH}\\
+    \vspace{0.5cm}
+    {\fontsize{9pt}{12pt}\selectfont
+        \textcolor{accentcolor}{\faEnvelope}\ email@gmail.com \quad
+        \textcolor{accentcolor}{\faPhone}\ +48 000 000 000 \quad
+        \textcolor{accentcolor}{\faMapMarker}\ Warsaw, Poland \quad
+        \textcolor{accentcolor}{\faGithub}\ \href{https://github.com/}{username} \quad
+        \textcolor{accentcolor}{\faYoutube}\ \href{https://www.youtube.com/}{UserName}
+    }
+\end{minipage}
+
+\vspace{0.4cm}
+
+\begin{minipage}[t]{0.38\textwidth}
+    \CVSection{O mnie}{{\fontsize{10pt}{12pt}\selectfont
+        % about me %
+    }}
+    \vspace{0.5cm}
+    \CVSection{Umiejętności}{
+% strengths %
+    }
+    \vspace{0.5cm}
+    \CVSection{Języki}{
+        \CVLanguage{Polski}{Ojczysty}
+        \dashedline
+        \CVLanguage{Angielski}{Średnio zaawansowany / B2}
+    }
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.58\textwidth}
+    \CVSection{Doświadczenie}{
+% experience %
+    }
+    \vspace{0.5cm}
+    \CVSection{Edukacja}{
+        \CVEduEntryExtra{Inżynier Informatyki}{Politechnika Poznańska}{2021 - 2025}{``Automatyczne wykrywanie fałszywych treści za pomocą algorytmów uczenia maszynowego''}
+        
+        \CVEduEntry{Technik Informatyk}{ZSEiS Elektronik Zielona Góra}{2017 - 2021}
+    }
+    % \vspace{0.1cm}
+    \CVSection{Certyfikaty}{
+        \begin{itemize}[leftmargin=*, topsep=0pt]\itemsep0em
+            \CVCertificate{EE.08. Montaż i eksploatacja systemów komputerowych, urządzeń peryferyjnych i sieci}
+            \CVCertificate{EE.09. Programowanie, tworzenie i administrowanie stronami internetowymi i bazami danych}
+            \CVCertificate{Ukończenie \textbf{kursu przetwarzania Big Data} z maksymalną oceną końcową}
+        \end{itemize}
+    }
+    \vspace{0.3cm}
+    \CVSection{Projekty}{
+        \ProjectsEntry{ML Inference API Platform}{https://github.com/jegor377/mlops-project}{
+            Gotowa do wdrożenia platforma ML SaaS zaimplementowana w oparciu o \textbf{FastAPI} jako backend i \textbf{React/TypeScript} jako frontend, z możliwym wdrożeniem przy pomocy \textbf{Kubernetes} i \textbf{Terraform} (lokalnie kind, \textbf{GKE} w chmurze).
+        }
+
+        \vspace{0.1cm}
+
+        \ProjectsEntry{Programmable Vehicle}{https://github.com/jegor377/programmable-vehicle}{
+            Mały programowalny pojazd ze sterowaniem różnicowym, który umożliwienia programowanie trasy i autonomiczne nawigowanie po niej. Oparty o MCU \textbf{ESP32} i \textbf{samodzielnie zaprojektowaną płytkę PCB}.
+        }
+        
+        % \vspace{0.1cm}
+
+        % \ProjectsEntry{Engineering Thesis}{https://github.com/jegor377/engineering_thesis}{
+        %     Opracowałem pipeline oparty na \textbf{PyTorch} i \textbf{RoBERTa}, wykorzystujący dane rozszerzone przy pomocy LLM oraz metadane do klasyfikacji wiarygodności tekstu. Zarządzałem wersjonowaniem danych za pomocą \textbf{DVC}, śledziłem eksperymenty z wykorzystaniem \textbf{MLflow} oraz wdrożyłem demonstracyjną aplikację w Gradio.
+        % }
+    }
+\end{minipage}
+
+\vspace*{\fill}
+
+% \center{\fontsize{8pt}{5pt}\selectfont I hereby give consent for my personal data to be processed for the purpose of conducting recruitment for the position for which I am applying.}
+
+{\centering\fontsize{6pt}{10pt}\selectfont Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w aplikacji dla celów obecnych oraz przyszłych procesów rekrutacyjnych, zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 (RODO) oraz ustawą z dnia 10 maja 2018 r. o ochronie danych osobowych. \par}
+
+\end{document}
