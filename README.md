@@ -42,15 +42,12 @@ The whole flow is implemented as a LangGraph `StateGraph` where each conversatio
 ```bash
 git clone <this-repo-url>
 cd <repo-directory>
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
 ```
 
 ## Running
 
 ```bash
-streamlit run app.py
+uv run streamlit run main.py
 ```
 
 Then open the printed local URL in your browser and start chatting with the assistant.
@@ -65,7 +62,9 @@ Then open the printed local URL in your browser and start chatting with the assi
 │   ├── generation.py          # generate_resume(): renders a ResumeConfig into a PDF
 │   └── schemas.py             # ArtifactsConfig, ResumeConfig
 ├── user.json                  # Saved candidate profile (created on first run)
-└── artifacts/                 # Generated PDFs and intermediate build artifacts (gitignored)
+├── dump/                      # LaTeX templates for the job resumes. One per each desired language.
+├── dump/                      # Generated tex build artifacts when something's failed (gitignored)
+└── outputs/                   # Generated PDFs and intermediate build artifacts (gitignored)
 ```
 
 ## Configuration
