@@ -4,6 +4,8 @@ An interactive, conversational assistant that helps you build a candidate profil
 
 Built with **LangGraph** (state machine + `interrupt()`-based human-in-the-loop flow), a **local LLM via Ollama**, and a **Streamlit** front end.
 
+https://github.com/user-attachments/assets/7f8c26df-775a-42e1-bb20-74bd08e383fc
+
 ## How it works
 
 1. **First run:** the assistant asks you to describe your commercial experience and skills in free text, extracts a structured `UserProfile` from it, and saves it locally.
